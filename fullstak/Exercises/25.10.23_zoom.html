@@ -1,0 +1,71 @@
+<canvas id="myCanvas" width="400" height="300" style="border:1px solid #ff0000;"></canvas>
+<br>
+<p>X:</p>
+<p id="x_value">--</p>
+<p>Y:</p>
+<p id="y_value">--</p>
+
+<script>
+
+    function keyDownEventHandler() {
+        if (event.keyCode == 40)
+            direction = "down";
+        if (event.keyCode == 38)
+            direction = "up";
+        if (event.keyCode == 37)
+            direction = "left";
+        if (event.keyCode == 39)
+            direction = "right";
+
+        document.getElementById("x_value").innerHTML = x;
+        document.getElementById("y_value").innerHTML = y;
+
+        //draw rectangular 
+        ctx.fillStyle = "black";
+        ctx.fillRect(x, y, 20, 20);
+    }
+
+    function TimeEventHandler() {
+
+        if (direction == "right")
+            x += 20;
+        if (direction == "left")
+            x -= 20;
+        if (direction == "up")
+            y -= 20;
+        if (direction == "down")
+            y += 20;
+        //-------------------------------
+        if (y == 0)
+            direction = "down";
+        if (y == 280)
+            direction = "up";
+        if (x == 380)
+            direction = "left";
+        if (x == 0)
+            direction = "right";
+        //-------------------------------
+        document.getElementById("x_value").innerHTML = x;
+        document.getElementById("y_value").innerHTML = y;
+
+        //clean
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 400, 300);
+        //draw rectangular 
+        ctx.fillStyle = "black";
+        ctx.fillRect(x, y, 20, 20);
+    }
+
+    ctx = document.getElementById('myCanvas').getContext('2d');
+    var x = 100;
+    var y = 100;
+    var direction = "right";
+
+    ctx.fillStyle = "black";
+    ctx.fillRect(x, y, 20, 20);
+
+    setInterval(TimeEventHandler, 300);
+
+    document.onkeydown = keyDownEventHandler;
+
+</script>
