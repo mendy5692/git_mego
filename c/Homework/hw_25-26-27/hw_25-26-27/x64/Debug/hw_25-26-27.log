@@ -1,0 +1,4 @@
+﻿  hw_25-26-27.cpp
+C:\Users\mmm05\OneDrive\שולחן העבודה\מסמכים\לימודים\git_mego\c\Homework\hw_25-26-27\hw_25-26-27\hw_25-26-27.cpp(3,12): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\mmm05\OneDrive\שולחן העבודה\מסמכים\לימודים\git_mego\c\Homework\hw_25-26-27\hw_25-26-27\hw_25-26-27.cpp(23,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  hw_25-26-27.vcxproj -> C:\Users\mmm05\OneDrive\שולחן העבודה\מסמכים\לימודים\git_mego\c\Homework\hw_25-26-27\x64\Debug\hw_25-26-27.exe
