@@ -54,6 +54,33 @@ print(id(c))
 # print(letters[:-9:-1])
 #---------------------------------------
 
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+        self.area = 0
+        self.perimeter = 0
+
+    def area(self):
+        self.area = self.width * self.height
+        print("the area of the rectangle is %.2f" % self.area)
+
+    def perimeter(self):
+        self.perimeter = (self.width + self.height) * 2
+        print("the area of rectangle is %.2f" % self.perimeter)
+
+    def get_num():
+        width = int(input("Enter the width of the rectangle: "))
+        height = int(input("Enter the height of the rectangle: "))
+        return width, height
+
+updata = Rectangle.get_num()
+Rectangle.area()
+Rectangle.perimeter()
+
+
+
+
 
 
 

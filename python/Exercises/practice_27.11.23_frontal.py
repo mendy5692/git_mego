@@ -8,10 +8,10 @@ print("i've {0:62.50f}".format(22/7)) #מינימום 52 תווים ושיהיה
 print("i've {0:<72.50f}".format(22/7)) # מינימום 72 תווים ושיהיה 50 אחרי הנקודה ולהצמיד לצד ימין
 '''
 
-'''
+
 for i in range(1, 13):
     print("No. {} squared is {} and cubed is {:4}".format(i, i ** 2, i ** 3))
-'''
+
 
 '''
 age = 24.3

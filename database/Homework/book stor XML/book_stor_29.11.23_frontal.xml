@@ -1,0 +1,68 @@
+
+<!DOCTYPE Book_Stor [
+
+<!ELEMENT Book_Stor (Book+)>
+<!ELEMENT Book (Name,Publishing,Author,category,Year,Copies,Line,shelf)>
+<!ELEMENT Name (#PCDATA)>
+<!ELEMENT Publishing (#PCDATA)>
+<!ELEMENT Author (#PCDATA)>
+<!ELEMENT category (#PCDATA)>
+<!ELEMENT Year (#PCDATA)>
+<!ELEMENT Copies (#PCDATA)>
+<!ELEMENT Line (#PCDATA)>
+<!ELEMENT shelf (#PCDATA)>
+
+]>
+
+<Book_Stor>
+    <Book>
+        <Name>A Contested Art</Name>
+        <Publishing>University of Oklahoma Press</Publishing>
+        <Author>Stephanie Lewthwaite</Author>
+        <category>art</category>
+        <Year>2015</Year>
+        <Copies>3</Copies>
+        <Line>12</Line>
+        <shelf>507</shelf>
+    </Book>
+    <Book>
+        <Name>Leo Strauss</Name>
+        <Publishing>SUNY Pres</Publishing>
+        <Author>Jeffrey A. Bernstein</Author>
+        <category>philosophy</category>
+        <Year>2015</Year>
+        <Copies>2</Copies>
+        <Line>27</Line>
+        <shelf>978</shelf>
+    </Book>
+    <Book>
+        <Name>Photography of Victorian Scotland</Name>
+        <Publishing>Edinburgh University Press</Publishing>
+        <Author>Roddy Simpson</Author>
+        <category>Photo</category>
+        <Year>2012</Year>
+        <Copies>5</Copies>
+        <Line>17</Line>
+        <shelf>763</shelf>
+    </Book>
+    <Book>
+        <Name>russian lacquered miniatur</Name>
+        <Publishing>leningrad</Publishing>
+        <Author>vladimir guliayev</Author>
+        <category>art</category>
+        <Year>1989</Year>
+        <Copies>1</Copies>
+        <Line>25</Line>
+        <shelf>298</shelf>
+    </Book>
+    <Book>
+        <Name>rome and vatican in colour</Name>
+        <Publishing>Edizioni Plurigraf</Publishing>
+        <Author>Loretta Santini</Author>
+        <category>Photo</category>
+        <Year>1978</Year>
+        <Copies>3</Copies>
+        <Line>12</Line>
+        <shelf>73</shelf>
+    </Book>
+</Book_Stor>

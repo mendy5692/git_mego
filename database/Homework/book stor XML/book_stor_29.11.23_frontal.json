@@ -1,0 +1,53 @@
+db.book.insert([
+    
+    {     
+        Name: "A Contested Art",
+        Publishing: "University of Oklahoma Press",
+        Author: "Stephanie Lewthwaite",
+        category: "art",
+        Year: 2015,
+        Copies: 3,
+        Line: 12,
+        shelf: 507       
+    },
+    {
+        Name: "Leo Strauss",
+        Publishing: "SUNY Pres",
+        Author: "Jeffrey A. Bernstein",
+        category: "philosophy",
+        Year: 2015,
+        Copies: 2,
+        Line: 27,
+        shelf: 978
+    },
+    {
+        Name: "Photography of Victorian Scotland",
+        Publishing: "Edinburgh University Press",
+        Author: "Roddy Simpson",
+        category: "Photo",
+        Year: 2012,
+        Copies: 5,
+        Line: 17,
+        shelf: 763
+    },
+    {
+        Name: "russian lacquered miniatur",
+        Publishing: "leningrad",
+        Author: "vladimir guliayev",
+        category: "art",
+        Year: 1989,
+        Copies: 1,
+        Line: 25,
+        shelf: 298
+    },
+    {
+        Name: "rome and vatican in colour",
+        Publishing: "Edizioni Plurigraf",
+        Author: "Loretta Santini",
+        category: "Photo",
+        Year: 1978,
+        Copies: 3,
+        Line: 12,
+        shelf: 73
+    }
+    ])
