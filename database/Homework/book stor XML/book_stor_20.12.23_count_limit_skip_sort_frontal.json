@@ -1,0 +1,19 @@
+test> use book_stor
+
+book_stor> db.book.find().count()
+
+book_stor> db.book.find().limit(1)
+
+book_stor> db.book.find().skip(db.book.find().count()-1)
+
+book_stor> db.book.find().limit(2)
+
+book_stor> db.book.find().skip(db.book.find().count()-2)
+
+book_stor> db.book.find({Name: 'Photography of Victorian Scotland'})
+
+book_stor> db.book.find({Copies: 5})
+
+book_stor> db.book.find().sort({Year: 1}).limit(1)
+
+book_stor> db.book.find().sort({Year: -1}).limit(1)

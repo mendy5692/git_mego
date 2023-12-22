@@ -1,0 +1,65 @@
+use order_book
+
+db.order.insert(
+{
+    letter_number: 1111,
+    name: "Oren",
+    id: 1111111111,
+    from: "Haifa",
+} )
+
+db.order.insert(
+{
+    letter_number: 2222,
+    name: "Moshe",
+    id: 2222222222,
+    from: "Natania",
+} )
+
+db.order.insert(
+{
+    letter_number: 3333,
+    name: "Mendy",
+    id: 333333333,
+    from: "Reshon_Letzion",
+    sent:
+        {
+        day: 3,
+        month: 3,
+        year: 3
+        }
+} )
+
+db.order.insert(
+{
+    letter_number: 4444,
+    name: "Haim",
+    id: 4444444444,
+    from: "Haifa",
+    sent:
+        {
+        day: 4,
+        month: 4,
+        year: 4
+        }
+} )
+
+db.order.remove({id: 1111111111})
+
+db.order.update({id: 2222222222},{$set:{
+    sent:
+        {
+        day: 5,
+        month: 5,
+        year: 5
+        }}})
+
+db.order.update({id: 333333333},{$unset:{
+    sent:
+        {
+        day: 3,
+        month: 3,
+        year: 3
+        }}})
+
+db.order.find({"sent.day":4})

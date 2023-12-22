@@ -1,0 +1,42 @@
+use book_stor
+
+db.book.remove({Year: 1978})
+
+db.book.insert( {
+    Name: "rome and vatican in colour",
+    Publishing: "Edizioni Plurigraf",
+    Author: "Loretta Santini",
+    category: "Photo",
+    Year: 1978,
+    Copies: 3,
+    Line: 12,
+    shelf: 73
+})
+
+db.book.update({Year: 1978},{$set:
+{
+    Name: "rome",
+    Publishing: "Plurigraf",
+    Author: "Santini",
+    category: "cukhds",
+    Year: 2,
+    Copies: 22,
+    Line: 222,
+    shelf: 2222
+}})
+
+db.book.update({Author: "vladimir guliayev"},{$set:
+{
+    Name: "miniatur",
+    Publishing: "dddddddd",
+    Author: "guliayev",
+    category: "www",
+    Year: 3,
+    Copies: 33,
+    Line: 333,
+    shelf: 3333
+}})
+
+db.book.update({Year: 2},{$set:{Year: 222222222}})
+
+
