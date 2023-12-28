@@ -4,6 +4,10 @@ from shape_class import Shape
 class Rectangle(Shape):
     def __init__(self, color, length, width):
         super().__init__(color)
+        if length <= 0:
+            raise ValueError("length must be pozitive.")
+        if width <= 0:
+            raise ValueError("width must be pozitive.")
         self.length = length
         self.width = width
 

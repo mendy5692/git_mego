@@ -1,7 +1,7 @@
 from circle_class import Circle
 from rectangle_class import Rectangle
 from math import pi
-
+'''
 def border():
     print("---------------------------------------------------")
 
@@ -20,10 +20,13 @@ else:
 border()
 
 # test 2
-print(f"\ntest 2:\n"
-      f"{circle.display_info()}"
-      f"\n==> need to print ==>\n"
-      f"This shape is colored: {circle.color}\t\tits radius is: {circle.radius}\tits area is: {circle.area()}\n")
+if str(circle.display_info()) == str(f"This shape is colored: {circle.color}\t\tits radius is: {circle.radius}\tits area is: {circle.area()}"):
+    print(f"test 2: it's {True}")
+else:
+    print(f"test 2: it's {False}"
+          f"\n{circle.display_info()}"
+          f"\n==> need to print ==>\n"
+          f"This shape is colored: {circle.color}\t\tits radius is: {circle.radius}\tits area is: {circle.area()}\n")
 
 border()
 
@@ -36,8 +39,15 @@ else:
 border()
 
 # test 4
-print(f"\ntest 4:\n{rectangle.display_info()}"
-      f"\n==> need to print: ==>\n"
-      f"This shape is colored: {rectangle.color}\t\tits length is: {rectangle.length}\tits width is: {rectangle.width}\tits area is: {rectangle.area()}")
+if rectangle.display_info() == f"This shape is colored: {rectangle.color}\t\tits length is: {rectangle.length}\tits width is: {rectangle.width}\tits area is: {rectangle.area()}":
+    print(f"test 4: it's {True}")
+else:
+    print(f"test 4: it's {False}"
+          f"\n{rectangle.display_info()}"
+          f"\n==> need to print: ==>\n"
+          f"This shape is colored: {rectangle.color}\t\tits length is: {rectangle.length}\tits width is: {rectangle.width}\tits area is: {rectangle.area()}")
 
-
+border()
+'''
+bob = Circle("red", 23)
+print(bob)
