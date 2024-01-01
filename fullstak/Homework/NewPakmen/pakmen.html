@@ -1,17 +1,275 @@
-<!DOCTYPE html>
+<canvas id="myCanvas" width="400" height="300" style="border:1px solid;"></canvas>
+<br>
+<p>score:</p>
+<p id="score">--</p>
+<p>life:</p>
+<p id="life">--</p>
+<p>pakmen_X:</p>
+<p id="x_value">--</p>
+<p>pakmen_Y:</p>
+<p id="y_value">--</p>
+<p>Apple_x:</p>
+<p id="rnd_x_value">--</p>
+<p>Apple_y:</p>
+<p id="rnd_y_value">--</p>
+<p>obstacle_x_place:</p>
+<p id="obstacle_x_place">--</p>
+<p>obstacle_y_place:</p>
+<p id="obstacle_y_place">--</p>
+<p>obstacle_x_size:</p>
+<p id="obstacle_x_size">--</p>
+<p>obstacle_y_size:</p>
+<p id="obstacle_y_size">--</p>
 
-    <head>
-        <link rel="stylesheet" href="pakmen_style.css">
-    </head>
+<script>
+    // פונקציה שתגרום למשתנה
+    // direction
+    // להשתנות בכל פעם שמקישים על מקש (לפי הלחיצה) 
+    function keyDownEventHandler() {
+            if (event.keyCode == 40){
+                for (var i = 0; i < bricks.length; i++){
+                    if (y != bricks[i].y - 20 && x ==bricks[i].x)
+                        direction = "down";}}
+    
+            if (event.keyCode == 38){
+                for (var i = 0; i < bricks.length; i++){
+                    if (y != bricks[i].y + 20 && x ==bricks[i].x)
+                        direction = "up";}}
 
-    <body>
-        <canvas id="MyCanvas" width="500px" height="500px"></canvas> 
+            if (event.keyCode == 37){
+                for (var i = 0; i < bricks.length; i++){
+                    if (x != bricks[i].x + 20 && y ==bricks[i].y)
+                        direction = "left";}}
 
-        <script>
-            let canvas = document.getElementById("MyCanvas");
-            let ctx = canvas.getContext("2d");
-            ctx.fillStyle = "#FF0000";
-            ctx.fillRect(0, 0, 500, 500);
-        </script>
-    </body>
-</html>
+            if (event.keyCode == 39){
+                for (var i = 0; i < bricks.length; i++){
+                    if (x != bricks[i].x - 20 && y ==bricks[i].y)
+                        direction = "right";}}
+    }
+
+    // פונקציה שתגרום לערכים
+    // X ו Y
+    // להשתנות לפי הכיוון שבמשתנה 
+    // direction
+    function TimeEventHandler() {
+
+        if (direction == "right" && x < 380)
+            x += 20;
+        if (direction == "left" && x > 0)
+            x -= 20;
+        if (direction == "up" && y > 0)
+            y -= 20;
+        if (direction == "down" && y < 280)
+            y += 20;
+        // להגדיר שכשנוגע בגבול יעצור
+        for (var i = 0; i < bricks.length; i++)
+            if ((direction == "right" && x == bricks[i].x - 20 && y ==bricks[i].y) ||
+                (direction == "left" && x == bricks[i].x + 20 && y ==bricks[i].y) ||
+                (direction == "up" && y == bricks[i].y + 20 && x ==bricks[i].x) ||
+                (direction == "down" && y == bricks[i].y - 20 && x ==bricks[i].x))
+                    direction = "stop";
+
+        // להגדיר שכשמגיע לתפוח יעלה הציון ושישנה מיקום תפוח
+        if (rnd_x == x && rnd_y == y) {
+            score += 1
+            rnd_x = Math.floor((Math.random() * 20)) * 20
+            rnd_y = Math.floor((Math.random() * 15)) * 20
+        }
+
+        // להגדיר שכשמגיע למכשול שירד החיים כל פעם
+        if (rnd_x_obstacle_size == 60)
+            if (x == rnd_x_obstacle_place || x == rnd_x_obstacle_place + 20 || x == rnd_x_obstacle_place + 40)
+                if (y == rnd_y_obstacle_place) {
+                    life -= 1;
+                    x = Math.floor((Math.random() * 20)) * 20;
+                    y = Math.floor((Math.random() * 15)) * 20;
+                }
+        if (rnd_x_obstacle_size == 40)
+            if (x == rnd_y_obstacle_place || x == rnd_y_obstacle_place + 20)
+                if (y == rnd_y_obstacle_place) {
+                    life -= 1;
+                    x = Math.floor((Math.random() * 20)) * 20;
+                    y = Math.floor((Math.random() * 15)) * 20;
+                }
+        if (rnd_x_obstacle_size == 20)
+            if (x == rnd_x_obstacle_place && y == rnd_y_obstacle_place) {
+                life -= 1;
+                x = Math.floor((Math.random() * 20)) * 20;
+                y = Math.floor((Math.random() * 15)) * 20;
+            }
+
+        // להדפיס ל
+        // HTML
+        // את ערך ה
+        // X ו Y
+        // המעודכן כל פעם
+        document.getElementById("x_value").innerHTML = x;
+        document.getElementById("y_value").innerHTML = y;
+        // להדפיס ל
+        //HTML 
+        // את ערך הציון המעודכן
+        document.getElementById("score").innerHTML = score;
+        // להדפיס ל
+        //HTML 
+        // את ערך החיים המעודכן
+        document.getElementById("life").innerHTML = life;
+
+        // לנקות ולייצר את לוח המשחק צבע, מיקום, וגודל
+        ctx.fillStyle = 'bisque';
+        ctx.fillRect(0, 0, 400, 300);
+        // לייצר את הפאקמן צבע, מיקום (ערך ה
+        // ,(X ו Y
+        // וגודל
+        ctx.fillStyle = "black";
+        ctx.fillRect(x, y, 20, 20);
+        // לייצר את התפוח צבע, מיקום (ערך ה
+        // ,(X ו Y
+        // וגודל
+        ctx.fillStyle = "red";
+        ctx.fillRect(rnd_x, rnd_y, 20, 20);
+        // לייצר מכשול באמצע
+        ctx.fillStyle = "blue";
+        ctx.fillRect(rnd_x_obstacle_place, rnd_y_obstacle_place, rnd_x_obstacle_size, rnd_y_obstacle_size);
+        for (var i = 0; i < bricks.length; i++)
+            ctx.fillRect(bricks[i].x, bricks[i].y, 20, 20);
+    }
+
+    // הגדרת פונקציה שתתן מיקום וגודל רנדומלי למכשול
+    function TimeEventHandler_3() {
+        rnd_x_obstacle_size = Math.ceil((Math.random() * 3)) * 20
+        if (rnd_x_obstacle_size > 20)
+            rnd_y_obstacle_size = 20;
+        else
+            rnd_y_obstacle_size = Math.ceil((Math.random() * 3)) * 20;
+
+        rnd_x_obstacle_place = Math.floor((Math.random() * 17)) * 20
+        rnd_y_obstacle_place = Math.floor((Math.random() * 12)) * 20
+
+        // להדפיס ל
+        // HTML
+        // את מיקום המכשול כל פעם
+        document.getElementById("obstacle_x_place").innerHTML = rnd_x_obstacle_place
+        document.getElementById("obstacle_y_place").innerHTML = rnd_y_obstacle_place
+        // להדפיס ל
+        // HTML
+        // את גודל המכשול כל פעם
+        document.getElementById("obstacle_x_size").innerHTML = rnd_x_obstacle_size
+        document.getElementById("obstacle_y_size").innerHTML = rnd_y_obstacle_size
+
+    }
+
+    // הגדרת פונקציה שתתן מיקום רנדומלי לתפוח (ונקרא לפונקציה כל 1000 שניות)
+    function TimeEventHandler_2() {
+        // הגדרת משתנה עם מספר שמתחלק ב 20 למיקום התפוח
+        rnd_x = Math.floor((Math.random() * 20)) * 20
+        rnd_y = Math.floor((Math.random() * 15)) * 20
+
+        // להדפיס ל
+        // HTML
+        // את ערך ה
+        // X ו Y
+        // הרנדומלי המעודכן כל פעם
+        document.getElementById("rnd_x_value").innerHTML = rnd_x;
+        document.getElementById("rnd_y_value").innerHTML = rnd_y;
+    }
+
+    // לגרום ללוח המשחק להיות דו מימדי
+    ctx = document.getElementById('myCanvas').getContext('2d');
+
+    // מיקום ראשוני של הפאקמן
+    // (X ו Y) 
+    var x = 100;
+    var y = 100;
+
+    // כיוון ראשוני של משתנה ה
+    // direction
+    var direction = "right";
+
+    // מיקום ראשוני של התפוח
+    var rnd_x = Math.floor((Math.random() * 20)) * 20
+    var rnd_y = Math.floor((Math.random() * 15)) * 20
+
+    // מיקום וגודל ראשוני של המכשול
+    rnd_x_obstacle_size = 20
+    rnd_y_obstacle_size = 20
+    rnd_x_obstacle_size += Math.ceil((Math.random() * 2)) * 20
+    if (rnd_x_obstacle_size > 20)
+        rnd_y_obstacle_size = 20;
+    else
+        rnd_y_obstacle_size += Math.ceil((Math.random() * 2)) * 20;
+
+    rnd_x_obstacle_place = Math.floor((Math.random() * 17)) * 20
+    rnd_y_obstacle_place = Math.floor((Math.random() * 12)) * 20
+
+    // בניית מערך למסלול
+    var map = [
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1,
+        1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1,
+        1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1,
+        1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1,
+        1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1,
+        1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1,
+        1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1,
+        1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1,
+        1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1,
+        1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+        1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    ]
+    // מימוש מערך המסלול
+    bricks = new Array();
+    map_x = 0;
+    map_y = 0;
+    for (var i = 0; i < map.length; i++) {
+        if (map[i] == 1) {
+            map_x = i % 20;
+            map_y = Math.floor(i / 20);
+            bricks.push({ x: map_x * 20, y: map_y * 20 });
+        }
+    }
+
+    //  הגדרת משתנה לציון
+    var score = 0
+
+    // הגדרת משתנה של חיים
+    life = 5
+
+    // להדפיס ל
+    // HTML
+    // את ערך ה
+    // X ו Y
+    // הרנדומלי המעודכן כל פעם
+    document.getElementById("rnd_x_value").innerHTML = rnd_x;
+    document.getElementById("rnd_y_value").innerHTML = rnd_y;
+
+    // setInterval
+    // קוראת לפונקציית
+    // TimeEventHandler
+    // שהפאקמן יזוז כל 300 מילי-שניות
+    setInterval(TimeEventHandler, 300);
+
+    // setInterval
+    // קוראת לפונקציית
+    // TimeEventHandler
+    // שהתפוח יזוז עם לא הגעתי אליו כל 10000 מילי-שניות
+    setInterval(TimeEventHandler_2, 10000);
+
+    // setInterval
+    // קוראת לפונקציית
+    // TimeEventHandler
+    // שהמכשול יזוז כל 100000 מילי-שניות
+    setInterval(TimeEventHandler_3, 10000);
+
+
+    // תשפיע על ה 
+    // HTML
+    // כל פעם שלוחצים על מקש תקרא לפונקציה
+    // keyDownEventHandler
+    document.onkeydown = keyDownEventHandler;
+
+
+
+</script>

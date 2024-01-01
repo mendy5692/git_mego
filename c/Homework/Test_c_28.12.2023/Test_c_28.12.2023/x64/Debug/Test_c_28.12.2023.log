@@ -1,0 +1,4 @@
+﻿  Test_c_28.12.2023.cpp
+C:\Users\mmm05\OneDrive\שולחן העבודה\מסמכים\לימודים\git_mego\c\Homework\Test_c_28.12.2023\Test_c_28.12.2023\Test_c_28.12.2023.cpp(21,6): warning C4101: 'divider': unreferenced local variable
+C:\Users\mmm05\OneDrive\שולחן העבודה\מסמכים\לימודים\git_mego\c\Homework\Test_c_28.12.2023\Test_c_28.12.2023\Test_c_28.12.2023.cpp(54,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  Test_c_28.12.2023.vcxproj -> C:\Users\mmm05\OneDrive\שולחן העבודה\מסמכים\לימודים\git_mego\c\Homework\Test_c_28.12.2023\x64\Debug\Test_c_28.12.2023.exe

@@ -1,0 +1,4 @@
+﻿  HW_28.12.23_exercise_50.cpp
+C:\Users\mmm05\OneDrive\שולחן העבודה\מסמכים\לימודים\git_mego\c\Exercises\HW_28.12.23_exercise_50\HW_28.12.23_exercise_50\HW_28.12.23_exercise_50.cpp(6,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\mmm05\OneDrive\שולחן העבודה\מסמכים\לימודים\git_mego\c\Exercises\HW_28.12.23_exercise_50\HW_28.12.23_exercise_50\HW_28.12.23_exercise_50.cpp(8,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  HW_28.12.23_exercise_50.vcxproj -> C:\Users\mmm05\OneDrive\שולחן העבודה\מסמכים\לימודים\git_mego\c\Exercises\HW_28.12.23_exercise_50\x64\Debug\HW_28.12.23_exercise_50.exe

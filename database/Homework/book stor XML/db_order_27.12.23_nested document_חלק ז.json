@@ -1,0 +1,127 @@
+use order_book
+
+order_book> db.order.insert([
+    {
+        id: 1111,
+        name: "Joan",
+        email: 1111111111,
+        sale: {
+                product_age: 23,
+                product: "pen",
+                color: "blue"
+                },
+    },
+    {
+        id: 2222,
+        name: "Yossi",
+        email: 2222222222222,
+        sale: {
+                product_age: 43,
+                product: "table",
+                color: "red"
+                },
+    }
+])
+
+db.order.remove({"sale.product_age": 43})
+
+db.order.update(
+    { name: "Moshe" },
+    {
+        $set: {
+            sale: [
+                {
+                    product_age1: 31,
+                    product1: "wach",
+                    color1: "green"
+                },
+                {
+                    product_age2: 72,
+                    product2: "swechert",
+                    color2: "black"
+                }
+            ]
+        }
+    }
+)
+    
+db.order.update(
+    {name: "Mendy"},
+    {
+        $set: {
+            sale: [
+                {
+                    product_age1: 56,
+                    product1: "bag",
+                    color1: "yelow"
+                },
+                {
+                    product_age2: 84,
+                    product2: "haus",
+                    color2: "wite"
+                },
+                {
+                    product_age3: 95,
+                    product3: "tire",
+                    color3: "orang"
+                }
+            ]
+        }
+    }
+)
+
+db.order.update(
+    { name: "Haim" },
+    {
+        $set: {
+            sale: [
+            {   
+                product_age: 69,
+                product: "computer",
+                color: "grey"
+            }
+            ]
+        }
+    }
+)
+
+db.order.update(
+    {name: "Mendy"},
+    {
+        $pull:{
+            sale:
+                {
+                    product_age1: 56,
+                    product1: "bag",
+                }
+        }
+    }
+)
+
+db.order.update(
+    {name: "Haim"},
+    {
+        $pull:{
+            sale:
+                {
+                    product_age: 69
+                }
+        }
+    }
+)
+
+db.order.update(
+    { name: "Mendy" },
+    {
+        $set: {
+            sale: {
+                product_age: 69,
+            }
+        }
+    }
+)
+
+db.order.find({ "sale.product_age": 23 })
+
+
+
